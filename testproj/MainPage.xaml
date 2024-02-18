@@ -1,42 +1,253 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="testproj.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+   <Grid>
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/> <!-- 디스플레이 부분 -->
+            <RowDefinition Height="*"/> <!-- 버튼 행 -->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>   
+       
+        <!-- 열 정의 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+        <Label
+            x:Name="result"
+            Grid.Row="0"
+            Grid.ColumnSpan="5"
+            Text="0"
+            BackgroundColor="AntiqueWhite"
+            FontSize="56"
+            HorizontalTextAlignment="End"
+            VerticalTextAlignment="Center"
+        />
+       <Button
+           Grid.Row="1"
+           Grid.Column="0"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="7"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="1"
+           Grid.Column="1"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="8"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="1"
+           Grid.Column="2"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="9"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="1"
+           Grid.Column="3"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="/"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+       <Button
+           Grid.Row="1"
+           Grid.Column="4"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="%"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+       <!--Third Row -->
+       <Button
+           Grid.Row="2"
+           Grid.Column="0"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="4"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="2"
+           Grid.Column="1"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="5"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="2"
+           Grid.Column="2"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="6"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="2"
+           Grid.Column="3"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="*"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+       <Button
+           Grid.Row="2"
+           Grid.Column="4"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="1/x"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+        <!--Fourth Row-->
+       <Button
+           Grid.Row="3"
+           Grid.Column="0"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="1"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="3"
+           Grid.Column="1"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="2"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="3"
+           Grid.Column="2"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="3"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="3"
+           Grid.Column="3"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="-"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+       <Button
+           Grid.Row="3"
+           Grid.RowSpan="2"
+           Grid.Column="4"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="="
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnSubmitClick"
+        />
+        <!--Fifth Row-->
+       <Button
+           Grid.Row="4"
+           Grid.Column="0"
+           Grid.ColumnSpan="2"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="0"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnNumberClick"
+        />
+       <Button
+           Grid.Row="4"
+           Grid.Column="2"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="."
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnPointClick"
+        />
+       <Button
+           Grid.Row="4"
+           Grid.Column="3"
+           CornerRadius="0"
+           BackgroundColor="LightGrey"
+           Text="+"
+           FontSize="32"
+           BorderColor="Black"
+           BorderWidth="1"
+           Clicked="OnCalClick"
+        />
+       
+         <!--디스플레이 부분 
+        <Entry Grid.Row="0" Grid.ColumnSpan="4" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+         첫 번째 행의 버튼들 
+        <Button Text="7" Grid.Row="1" Grid.Column="0" />
+        <Button Text="8" Grid.Row="1" Grid.Column="1" />
+        <Button Text="9" Grid.Row="1" Grid.Column="2" />
+        <Button Text="/" Grid.Row="1" Grid.Column="3" />-->
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+   </Grid>
 
 </ContentPage>
 
