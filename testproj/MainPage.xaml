@@ -7,7 +7,9 @@
    <Grid>
        
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/> <!-- 디스플레이 부분 -->
+            <RowDefinition Height="20"/> <!-- 저장 버튼을 구현할 열 -->
+            <RowDefinition Height="180"/> <!-- 계산 기록을 표시할 리스트 뷰 -->
+            <RowDefinition Height="*"/> <!-- 현재 수식과 결과를 표시할 레이블 -->
             <RowDefinition Height="*"/> <!-- 버튼 행 -->
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -23,19 +25,57 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        <!-- 계산 기록을 표시하는 ListView -->
+       <Button
+           Grid.Row="0"
+           Grid.Column="0"
+           CornerRadius="0"
+           BackgroundColor="LightGray"
+           Text="저장"
+           TextColor="Black"
+           FontSize="12"
+           BorderWidth="0"
+           BorderColor="Black"
+           Clicked="OnSaveClick"
+          
+           />
+       <Button
+           Grid.Row="0"
+           Grid.Column="1"
+           Grid.ColumnSpan="4"
+           CornerRadius="0"
+           BackgroundColor="LightGray"
+           
+           TextColor="Black"
+           FontSize="12"
+           BorderWidth="0"
+          
+           />
+       <ListView x:Name="calculationHistory"
+            Grid.Row="1"
+            Grid.ColumnSpan="5"
+            BackgroundColor="Wheat"
+            SelectionMode="Single"
+            ItemSelected="OnHistoryItemClicked"> <!-- 이벤트 핸들러 추가 -->
+            <ListView.ItemTemplate>
+               <DataTemplate>
+                   <TextCell Text="{Binding CalculationProcess}" /> <!-- DisplayValue는 계산 결과를 나타내는 프로퍼티 이름입니다 -->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+       </ListView>
         <Label
             x:Name="result"
-            Grid.Row="0"
+            Grid.Row="2"
             Grid.ColumnSpan="5"
-            Text="0"
+            Text=""
+            Padding="0,0,20,0"
             BackgroundColor="AntiqueWhite"
             FontSize="56"
             HorizontalTextAlignment="End"
             VerticalTextAlignment="Center"
         />
        <Button
-           Grid.Row="1"
+           Grid.Row="3"
            Grid.Column="0"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -46,7 +86,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="1"
+           Grid.Row="3"
            Grid.Column="1"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -57,7 +97,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="1"
+           Grid.Row="3"
            Grid.Column="2"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -68,7 +108,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="1"
+           Grid.Row="3"
            Grid.Column="3"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -79,7 +119,7 @@
            Clicked="OnCalClick"
         />
        <Button
-           Grid.Row="1"
+           Grid.Row="3"
            Grid.Column="4"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -91,7 +131,7 @@
         />
        <!--Third Row -->
        <Button
-           Grid.Row="2"
+           Grid.Row="4"
            Grid.Column="0"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -102,7 +142,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="2"
+           Grid.Row="4"
            Grid.Column="1"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -113,7 +153,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="2"
+           Grid.Row="4"
            Grid.Column="2"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -124,7 +164,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="2"
+           Grid.Row="4"
            Grid.Column="3"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -135,7 +175,7 @@
            Clicked="OnCalClick"
         />
        <Button
-           Grid.Row="2"
+           Grid.Row="4"
            Grid.Column="4"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -147,7 +187,7 @@
         />
         <!--Fourth Row-->
        <Button
-           Grid.Row="3"
+           Grid.Row="5"
            Grid.Column="0"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -158,7 +198,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="3"
+           Grid.Row="5"
            Grid.Column="1"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -169,7 +209,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="3"
+           Grid.Row="5"
            Grid.Column="2"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -180,7 +220,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="3"
+           Grid.Row="5"
            Grid.Column="3"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -191,7 +231,7 @@
            Clicked="OnCalClick"
         />
        <Button
-           Grid.Row="3"
+           Grid.Row="5"
            Grid.RowSpan="2"
            Grid.Column="4"
            CornerRadius="0"
@@ -204,7 +244,7 @@
         />
         <!--Fifth Row-->
        <Button
-           Grid.Row="4"
+           Grid.Row="6"
            Grid.Column="0"
            Grid.ColumnSpan="2"
            CornerRadius="0"
@@ -216,7 +256,7 @@
            Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="4"
+           Grid.Row="6"
            Grid.Column="2"
            CornerRadius="0"
            BackgroundColor="LightGrey"
@@ -224,10 +264,10 @@
            FontSize="32"
            BorderColor="Black"
            BorderWidth="1"
-           Clicked="OnPointClick"
+           Clicked="OnNumberClick"
         />
        <Button
-           Grid.Row="4"
+           Grid.Row="6"
            Grid.Column="3"
            CornerRadius="0"
            BackgroundColor="LightGrey"
